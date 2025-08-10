@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Random Song Lyrics Searcher</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- html2canvas for capturing quote card to PNG -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Random Song Lyrics Searcher</h1>
+      <div class="controls-top">
+        <button id="themeToggle" title="Toggle dark/light">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="search card">
+        <label for="artistInput">Artist name</label>
+        <div class="row">
+          <input id="artistInput" placeholder="e.g. Adele, Drake, Taylor Swift" />
+          <button id="searchBtn">Search</button>
+          <button id="anotherBtn" title="Get another line" style="display:none">Another</button>
+        </div>
+        <div class="options">
+          <label><input type="checkbox" id="preferLong" /> Prefer longer lines</label>
+        </div>
+        <p id="status" class="status">Type an artist and click Search — the app will try multiple songs until it finds lyrics.</p>
+      </section>
+
+      <section class="card result-area" id="resultArea" hidden>
+        <div id="card" class="quote-card">
+          <div class="quote-text" id="quoteText">—</div>
+          <div class="meta">
+            <div id="songMeta"></div>
+            <div class="line-actions">
+              <button id="downloadBtn">⬇ Download PNG</button>
+              <button id="shareBtn">🔗 Share</button>
+            </div>
+          </div>
+        </div>
+        <div class="mini-note">
+          <small id="rawSource"></small>
+        </div>
+      </section>
+
+      <section class="card tips">
+        <h4>How it works</h4>
+        <ol>
+          <li>Search an artist → app fetches songs (iTunes API).</li>
+          <li>It requests lyrics for random tracks (lyrics.ovh).</li>
+          <li>When lyrics are found, a random line is chosen and shown as a quote card.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <small>Made with ❤️ — uses iTunes Search API + lyrics.ovh (public)</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
